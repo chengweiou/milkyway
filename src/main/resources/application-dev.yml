@@ -1,0 +1,16 @@
+server:
+  port: 0
+  servlet:
+    context-path: /milkyway
+
+spring:
+  jackson:
+    default-property-inclusion: NON_NULL
+  datasource:
+    url: jdbc:postgresql://127.0.0.1/universe?currentSchema=milkyway
+    username: postgres
+    password: 123456
+
+site:
+  andromeda: http://127.0.0.1:60002/andromeda
+

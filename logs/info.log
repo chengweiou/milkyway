@@ -1,0 +1,172 @@
+[08:30:51:850] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.buildDefaultMergedContextConfiguration(AbstractTestContextBootstrapper.java:308) Neither @ContextConfiguration nor @ContextHierarchy found for test class [chengweiou.universe.milkyway.controller.me.PersonTest], using SpringBootContextLoader
+[08:30:51:861] [INFO] - org.springframework.test.context.support.AbstractContextLoader
+     --- org.springframework.test.context.support.AbstractContextLoader.generateDefaultLocations(AbstractContextLoader.java:264) Could not detect default resource locations for test class [chengweiou.universe.milkyway.controller.me.PersonTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[08:30:51:862] [INFO] - org.springframework.test.context.support.AnnotationConfigContextLoaderUtils
+     --- org.springframework.test.context.support.AnnotationConfigContextLoaderUtils.detectDefaultConfigurationClasses(AnnotationConfigContextLoaderUtils.java:83) Could not detect default configuration classes for test class [chengweiou.universe.milkyway.controller.me.PersonTest]: PersonTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[08:30:52:003] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.boot.test.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses(SpringBootTestContextBootstrapper.java:237) Found @SpringBootConfiguration chengweiou.universe.milkyway.MilkywayApplication for test class chengweiou.universe.milkyway.controller.me.PersonTest
+[08:30:52:096] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248) Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[08:30:52:112] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:177) Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4351171a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3c2772d1, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@37d00a23, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@433e536f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@89c65d5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@faa3fed, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@381cad29, org.springframework.test.context.event.EventPublishingTestExecutionListener@988246e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@62515a47, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3c5a54b7, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@61f2c3f0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@291120f4, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@417ad4f3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2f6bcf87]
+[08:30:52:494] [INFO] - chengweiou.universe.milkyway.controller.me.PersonTest
+     --- org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55) Starting PersonTest on chengweis-MBP.lan with PID 91303 (started by chengweiou in /Users/chengweiou/Desktop/project/universe/milkyway)
+[08:30:52:497] [INFO] - chengweiou.universe.milkyway.controller.me.PersonTest
+     --- org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:655) The following profiles are active: test
+[08:30:53:597] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate
+     --- org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected(RepositoryConfigurationDelegate.java:249) Multiple Spring Data modules found, entering strict repository configuration mode!
+[08:30:53:601] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate
+     --- org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:127) Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[08:30:53:636] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate
+     --- org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:187) Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+[08:30:54:534] [INFO] - com.zaxxer.hikari.HikariDataSource
+     --- com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:110) HikariPool-1 - Starting...
+[08:30:54:822] [INFO] - com.zaxxer.hikari.HikariDataSource
+     --- com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:123) HikariPool-1 - Start completed.
+[08:30:56:410] [INFO] - org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
+     --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:181) Initializing ExecutorService 'applicationTaskExecutor'
+[08:30:57:889] [INFO] - org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration
+     --- org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.lambda$h2Console$0(H2ConsoleAutoConfiguration.java:74) H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:test'
+[08:30:57:972] [INFO] - org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver
+     --- org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver.<init>(EndpointLinksResolver.java:58) Exposing 2 endpoint(s) beneath base path '/actuator'
+[08:30:58:081] [INFO] - chengweiou.universe.milkyway.controller.me.PersonTest
+     --- org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:61) Started PersonTest in 5.916 seconds (JVM running for 7.86)
+[08:30:58:131] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:131] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:143] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 12 ms
+[08:30:58:544] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:544] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:549] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 5 ms
+[08:30:58:602] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:603] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:609] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 5 ms
+[08:30:58:674] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.buildDefaultMergedContextConfiguration(AbstractTestContextBootstrapper.java:308) Neither @ContextConfiguration nor @ContextHierarchy found for test class [chengweiou.universe.milkyway.controller.mg.PetTest], using SpringBootContextLoader
+[08:30:58:676] [INFO] - org.springframework.test.context.support.AbstractContextLoader
+     --- org.springframework.test.context.support.AbstractContextLoader.generateDefaultLocations(AbstractContextLoader.java:264) Could not detect default resource locations for test class [chengweiou.universe.milkyway.controller.mg.PetTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[08:30:58:676] [INFO] - org.springframework.test.context.support.AnnotationConfigContextLoaderUtils
+     --- org.springframework.test.context.support.AnnotationConfigContextLoaderUtils.detectDefaultConfigurationClasses(AnnotationConfigContextLoaderUtils.java:83) Could not detect default configuration classes for test class [chengweiou.universe.milkyway.controller.mg.PetTest]: PetTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[08:30:58:683] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.boot.test.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses(SpringBootTestContextBootstrapper.java:237) Found @SpringBootConfiguration chengweiou.universe.milkyway.MilkywayApplication for test class chengweiou.universe.milkyway.controller.mg.PetTest
+[08:30:58:684] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248) Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[08:30:58:685] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:177) Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@27ea552d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7a57c5d9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@742aa00a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2be208db, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5ed463b7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1ae90cb9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3b62c51e, org.springframework.test.context.event.EventPublishingTestExecutionListener@7db679, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7dc9b41a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2f97e3de, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2f09907, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6f53295e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5f8a29ca, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4f93a8f6]
+[08:30:58:693] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:694] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:696] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 2 ms
+[08:30:58:747] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:748] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:754] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 6 ms
+[08:30:58:805] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:805] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:814] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 7 ms
+[08:30:58:845] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:846] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:853] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 6 ms
+[08:30:58:896] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.buildDefaultMergedContextConfiguration(AbstractTestContextBootstrapper.java:308) Neither @ContextConfiguration nor @ContextHierarchy found for test class [chengweiou.universe.milkyway.controller.mg.PersonTest], using SpringBootContextLoader
+[08:30:58:900] [INFO] - org.springframework.test.context.support.AbstractContextLoader
+     --- org.springframework.test.context.support.AbstractContextLoader.generateDefaultLocations(AbstractContextLoader.java:264) Could not detect default resource locations for test class [chengweiou.universe.milkyway.controller.mg.PersonTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[08:30:58:900] [INFO] - org.springframework.test.context.support.AnnotationConfigContextLoaderUtils
+     --- org.springframework.test.context.support.AnnotationConfigContextLoaderUtils.detectDefaultConfigurationClasses(AnnotationConfigContextLoaderUtils.java:83) Could not detect default configuration classes for test class [chengweiou.universe.milkyway.controller.mg.PersonTest]: PersonTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[08:30:58:903] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.boot.test.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses(SpringBootTestContextBootstrapper.java:237) Found @SpringBootConfiguration chengweiou.universe.milkyway.MilkywayApplication for test class chengweiou.universe.milkyway.controller.mg.PersonTest
+[08:30:58:907] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248) Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[08:30:58:908] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:177) Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5d03df76, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@17f7a1af, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@d62feaf, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3093161a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@73a88711, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5978ba12, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@43f5b014, org.springframework.test.context.event.EventPublishingTestExecutionListener@6b7e4db6, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5c59dfc7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@40ed4674, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2ef63b6d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@377cc0f8, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@25c98637, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@fbdba1c]
+[08:30:58:919] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:919] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:923] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 4 ms
+[08:30:58:976] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:58:977] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:58:983] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 6 ms
+[08:30:59:024] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:024] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:030] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 5 ms
+[08:30:59:081] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:082] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:088] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 4 ms
+[08:30:59:130] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:131] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:139] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 8 ms
+[08:30:59:181] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:182] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:187] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 5 ms
+[08:30:59:223] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.buildDefaultMergedContextConfiguration(AbstractTestContextBootstrapper.java:308) Neither @ContextConfiguration nor @ContextHierarchy found for test class [chengweiou.universe.milkyway.controller.all.PetTest], using SpringBootContextLoader
+[08:30:59:226] [INFO] - org.springframework.test.context.support.AbstractContextLoader
+     --- org.springframework.test.context.support.AbstractContextLoader.generateDefaultLocations(AbstractContextLoader.java:264) Could not detect default resource locations for test class [chengweiou.universe.milkyway.controller.all.PetTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+[08:30:59:226] [INFO] - org.springframework.test.context.support.AnnotationConfigContextLoaderUtils
+     --- org.springframework.test.context.support.AnnotationConfigContextLoaderUtils.detectDefaultConfigurationClasses(AnnotationConfigContextLoaderUtils.java:83) Could not detect default configuration classes for test class [chengweiou.universe.milkyway.controller.all.PetTest]: PetTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[08:30:59:238] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.boot.test.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses(SpringBootTestContextBootstrapper.java:237) Found @SpringBootConfiguration chengweiou.universe.milkyway.MilkywayApplication for test class chengweiou.universe.milkyway.controller.all.PetTest
+[08:30:59:240] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:248) Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[08:30:59:241] [INFO] - org.springframework.boot.test.context.SpringBootTestContextBootstrapper
+     --- org.springframework.test.context.support.AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:177) Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5b5d6f9c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3514df8d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@b0e6d4e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2bf2523f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1be3e952, org.springframework.test.context.transaction.TransactionalTestExecutionListener@818a514, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7004cd44, org.springframework.test.context.event.EventPublishingTestExecutionListener@495e1ad1, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4d73d3d1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@eef6e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@56b66cc6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6f076c53, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3c39c739, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4b3b2a4f]
+[08:30:59:248] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:248] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:251] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 3 ms
+[08:30:59:298] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:299] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:305] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 5 ms
+[08:30:59:337] [INFO] - org.springframework.boot.test.mock.web.SpringBootMockServletContext
+     --- org.springframework.mock.web.MockServletContext.log(MockServletContext.java:455) Initializing Spring TestDispatcherServlet ''
+[08:30:59:338] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525) Initializing Servlet ''
+[08:30:59:346] [INFO] - org.springframework.test.web.servlet.TestDispatcherServlet
+     --- org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547) Completed initialization in 8 ms
+[08:30:59:413] [INFO] - org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
+     --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:218) Shutting down ExecutorService 'applicationTaskExecutor'
+[08:30:59:419] [INFO] - com.zaxxer.hikari.HikariDataSource
+     --- com.zaxxer.hikari.HikariDataSource.close(HikariDataSource.java:350) HikariPool-1 - Shutdown initiated...
+[08:30:59:429] [INFO] - com.zaxxer.hikari.HikariDataSource
+     --- com.zaxxer.hikari.HikariDataSource.close(HikariDataSource.java:352) HikariPool-1 - Shutdown completed.
