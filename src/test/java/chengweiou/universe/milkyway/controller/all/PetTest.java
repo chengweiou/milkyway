@@ -10,7 +10,6 @@ import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.manager.account.AccountManager;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.model.entity.pet.Pet;
-import chengweiou.universe.milkyway.service.pet.PetDio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,8 +36,6 @@ public class PetTest {
 	private Account loginAccount;
 	@Autowired
 	private Data data;
-	@Autowired
-	private PetDio dio;
 
 	@Test
 	public void findById() throws Exception {
@@ -47,7 +44,6 @@ public class PetTest {
 		Rest<Pet> rest = Rest.from(result, Pet.class);
 		Assertions.assertEquals(BasicRestCode.OK, rest.getCode());
 		Assertions.assertEquals(data.petList.get(0).getId(), rest.getData().getId());
-		dio.update(data.petList.get(0));
 	}
 
 	@Test

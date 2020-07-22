@@ -9,6 +9,7 @@ import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.manager.account.AccountManager;
 import chengweiou.universe.milkyway.model.entity.person.Person;
+import chengweiou.universe.milkyway.service.pet.PetDio;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +35,10 @@ public class PetTest {
 	private Account loginAccount;
 	@Autowired
 	private Data data;
+
+	@Autowired
+	private PetDio dio;
+
 	@Test
 	public void saveDelete() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.post("/mg/pet")
@@ -73,10 +78,7 @@ public class PetTest {
 		Assertions.assertEquals(BasicRestCode.OK, rest.getCode());
 		Assertions.assertEquals(true, rest.getData());
 
-		mvc.perform(MockMvcRequestBuilders.put("/mg/pet/" + data.petList.get(0).getId())
-				.header("loginAccount", new Gson().toJson(loginAccount))
-				.param("name", old)
-		).andReturn().getResponse().getContentAsString();
+		dio.update(data.petList.get(0));
 	}
 
 	@Test

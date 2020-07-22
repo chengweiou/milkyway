@@ -7,6 +7,7 @@ import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.model.entity.person.PersonType;
+import chengweiou.universe.milkyway.service.person.PersonDio;
 import chengweiou.universe.milkyway.service.person.PersonService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,9 @@ public class PersonTest {
 	@Autowired
 	private Data data;
 
+	@Autowired
+	private PersonDio dio;
+
 	@Test
 	public void saveDelete() throws FailException {
 		Person e = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").to(new Person());
@@ -35,14 +39,13 @@ public class PersonTest {
 
 	@Test
 	public void update() {
-		String old = data.personList.get(0).getName();
 		Person e = Builder.set("id", data.personList.get(0).getId()).set("name", "service update").to(new Person());
 		long count = service.update(e);
 		Assertions.assertEquals(1, count);
 		Person indb = service.findById(e);
 		Assertions.assertEquals("service update", indb.getName());
-		Builder.set("name", old).to(e);
-		service.update(e);
+
+		dio.update(data.personList.get(0));
 	}
 
 	@Test

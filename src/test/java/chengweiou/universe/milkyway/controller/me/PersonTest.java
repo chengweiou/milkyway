@@ -35,13 +35,12 @@ public class PersonTest {
 	private Account loginAccount;
 	@Autowired
 	private Data data;
+
 	@Autowired
 	private PersonDio dio;
 
 	@Test
 	public void update() throws Exception {
-		String old = data.personList.get(0).getName();
-
 		String result = mvc.perform(MockMvcRequestBuilders.put("/me")
 				.header("loginAccount", new Gson().toJson(loginAccount))
 				.param("name", "controller-test")
@@ -50,7 +49,7 @@ public class PersonTest {
 		Assertions.assertEquals(BasicRestCode.OK, rest.getCode());
 		Assertions.assertEquals(true, rest.getData());
 
-		dio.update(Builder.set("id", data.personList.get(0).getId()).set("name", old).to(new Person()));
+		dio.update(data.personList.get(0));
 	}
 
 	@Test

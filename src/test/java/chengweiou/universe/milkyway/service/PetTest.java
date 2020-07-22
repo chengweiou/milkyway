@@ -6,6 +6,7 @@ import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.pet.Pet;
+import chengweiou.universe.milkyway.service.pet.PetDio;
 import chengweiou.universe.milkyway.service.pet.PetService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,9 @@ public class PetTest {
 	@Autowired
 	private Data data;
 
+	@Autowired
+	private PetDio dio;
+
 	@Test
 	public void saveDelete() throws FailException {
 		Pet e = Builder.set("name", "service-test").set("age", 30).to(new Pet());
@@ -34,14 +38,13 @@ public class PetTest {
 
 	@Test
 	public void update() {
-		String old = data.petList.get(0).getName();
 		Pet e = Builder.set("id", data.petList.get(0).getId()).set("name", "service update").to(new Pet());
 		long count = service.update(e);
 		Assertions.assertEquals(1, count);
 		Pet indb = service.findById(e);
 		Assertions.assertEquals("service update", indb.getName());
-		Builder.set("name", old).to(e);
-		service.update(e);
+
+		dio.update(data.petList.get(0));
 	}
 
 	@Test
