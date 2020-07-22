@@ -3,9 +3,9 @@ set search_path = milkyway;
 DROP TABLE IF EXISTS person;
 CREATE TABLE person(
     id bigserial NOT NULL,
-    name character varying NOT NULL,
-    type character varying NOT NULL,
-    phone character varying NOT NULL,
+    name text NOT NULL,
+    type text NOT NULL,
+    phone text NOT NULL,
     createAt timestamp without time zone NOT NULL,
     updateAt timestamp without time zone NOT NULL,
     PRIMARY KEY (id)
@@ -14,8 +14,8 @@ CREATE TABLE person(
 DROP TABLE IF EXISTS pet;
 CREATE TABLE pet(
     id bigserial NOT NULL,
-    name character varying NOT NULL,
-    type character varying NOT NULL,
+    name text NOT NULL,
+    type text NOT NULL,
     age integer NOT NULL,
     createAt timestamp without time zone NOT NULL,
     updateAt timestamp without time zone NOT NULL,
