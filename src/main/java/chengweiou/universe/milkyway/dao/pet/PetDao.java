@@ -45,23 +45,20 @@ public interface PetDao {
             }}.toString();
         }
 
-        public String count(@Param("searchCondition")final SearchCondition searchCondition, @Param("sample") Pet sample) {
-            return new SQL() {{
-                SELECT("count(*)"); FROM("pet");
-                if (searchCondition.getK() != null) WHERE("name LIKE #{searchCondition.full.like.k}");
-                if (searchCondition.getIdList() != null) WHERE("id in ${searchCondition.foreachIdList}");
-                if (sample != null) {
-                }
-            }}.toString();
+        public String count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Pet sample) {
+            return baseFind(searchCondition, sample).SELECT("count(*)").toString();
         }
-        public String find(@Param("searchCondition")final SearchCondition searchCondition, @Param("sample") Pet sample) {
+        public String find(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Pet sample) {
+            return baseFind(searchCondition, sample).SELECT("*").toString().concat(searchCondition.getOrderBy()).concat(searchCondition.getSqlLimit());
+        }
+        private SQL baseFind(SearchCondition searchCondition, Pet sample) {
             return new SQL() {{
-                SELECT("*"); FROM("pet");
+                FROM("pet");
                 if (searchCondition.getK() != null) WHERE("name LIKE #{searchCondition.full.like.k}");
                 if (searchCondition.getIdList() != null) WHERE("id in ${searchCondition.foreachIdList}");
                 if (sample != null) {
                 }
-            }}.toString().concat(searchCondition.getOrderBy()).concat(searchCondition.getSqlLimit());
+            }};
         }
     }
 }

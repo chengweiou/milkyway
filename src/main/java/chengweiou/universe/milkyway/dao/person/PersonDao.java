@@ -46,25 +46,20 @@ public interface PersonDao {
             }}.toString();
         }
         public String count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Person sample) {
-            return new SQL() {{
-                SELECT("count(*)"); FROM("person");
-                if (searchCondition.getK() != null) WHERE("(name LIKE #{searchCondition.like.k} or phone LIKE #{searchCondition.like.k})");
-                if (searchCondition.getMinDate() != null) WHERE("createAt >= #{searchCondition.minDate}::date");
-                if (sample != null) {
-                    if (sample.getType() != null) WHERE("type = #{sample.type}");
-                }
-            }}.toString();
+            return baseFind(searchCondition, sample).SELECT("count(*)").toString();
         }
-
         public String find(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Person sample) {
+            return baseFind(searchCondition, sample).SELECT("*").toString().concat(searchCondition.getOrderBy()).concat(searchCondition.getSqlLimit());
+        }
+        private SQL baseFind(SearchCondition searchCondition, Person sample) {
             return new SQL() {{
-                SELECT("*"); FROM("person");
+                FROM("person");
                 if (searchCondition.getK() != null) WHERE("(name LIKE #{searchCondition.like.k} or phone LIKE #{searchCondition.like.k})");
                 if (searchCondition.getMinDate() != null) WHERE("createAt >= #{searchCondition.minDate}::date");
                 if (sample != null) {
                     if (sample.getType() != null) WHERE("type = #{sample.type}");
                 }
-            }}.toString().concat(searchCondition.getOrderBy()).concat(searchCondition.getSqlLimit());
+            }};
         }
     }
 }
