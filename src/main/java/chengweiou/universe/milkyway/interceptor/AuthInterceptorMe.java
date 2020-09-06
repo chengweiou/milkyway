@@ -19,7 +19,7 @@ public class AuthInterceptorMe implements HandlerInterceptor {
         if (accountJson == null) return unauth(response);
         Account loginAccount = new Gson().fromJson(accountJson, Account.class);
         PersonType personType = PersonType.valueOf(loginAccount.getExtra());
-        if (personType == PersonType.SUPER || personType == PersonType.EMPLOYEE || personType == PersonType.MEMBER) return true;
+        if (personType != null) return true;
         return unauth(response);
     }
 

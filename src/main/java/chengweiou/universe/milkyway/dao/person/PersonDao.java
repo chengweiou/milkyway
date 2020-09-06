@@ -1,9 +1,12 @@
 package chengweiou.universe.milkyway.dao.person;
 
 
+import chengweiou.universe.milkyway.base.dao.BaseDao;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.person.Person;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.stereotype.Repository;
 
@@ -11,21 +14,7 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface PersonDao {
-
-    @Insert("insert into person(name, type, phone, createAt, updateAt) values" +
-            "(#{name}, #{type}, #{phone}, #{createAt}, #{updateAt})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-    long save(Person e);
-
-    @Delete("delete from person where id=#{id}")
-    long delete(Person e);
-
-    @UpdateProvider(type = Sql.class, method = "update")
-    long update(Person e);
-
-    @Select("select * from person where id=#{id}")
-    Person findById(Person e);
+public interface PersonDao extends BaseDao<Person> {
 
     @SelectProvider(type = Sql.class, method = "count")
     long count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Person sample);
@@ -35,16 +24,6 @@ public interface PersonDao {
 
     class Sql {
 
-        public String update(final Person e) {
-            return new SQL() {{
-                UPDATE("person");
-                if (e.getName() != null) SET("name = #{name}");
-                if (e.getType() != null) SET("type = #{type}");
-                if (e.getPhone() != null) SET("phone = #{phone}");
-                SET("updateAt = #{updateAt}");
-                WHERE("id=#{id}");
-            }}.toString();
-        }
         public String count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Person sample) {
             return baseFind(searchCondition, sample).SELECT("count(*)").toString();
         }

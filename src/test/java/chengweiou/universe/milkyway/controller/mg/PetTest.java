@@ -68,8 +68,6 @@ public class PetTest {
 
 	@Test
 	public void update() throws Exception {
-		String old = data.petList.get(0).getName();
-
 		String result = mvc.perform(MockMvcRequestBuilders.put("/mg/pet/" + data.petList.get(0).getId())
 				.header("loginAccount", new Gson().toJson(loginAccount))
 				.param("name", "controller update")
