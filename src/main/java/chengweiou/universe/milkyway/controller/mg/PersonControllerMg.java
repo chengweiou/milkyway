@@ -7,7 +7,7 @@ import chengweiou.universe.blackhole.exception.ProjException;
 import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.blackhole.param.Valid;
 import chengweiou.universe.milkyway.base.converter.Account;
-import chengweiou.universe.milkyway.manager.account.AccountManager;
+import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.service.person.PersonService;

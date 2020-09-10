@@ -7,7 +7,7 @@ import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.data.Data;
-import chengweiou.universe.milkyway.manager.account.AccountManager;
+import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.service.pet.PetDio;
 import com.google.gson.Gson;

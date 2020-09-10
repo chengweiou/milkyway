@@ -1,6 +1,6 @@
 package chengweiou.universe.milkyway.data;
 
-import chengweiou.universe.milkyway.manager.account.AccountManager;
+import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

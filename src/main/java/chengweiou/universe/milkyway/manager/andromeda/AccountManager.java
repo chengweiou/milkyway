@@ -1,4 +1,4 @@
-package chengweiou.universe.milkyway.manager.account;
+package chengweiou.universe.milkyway.manager.andromeda;
 
 import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.blackhole.model.BasicRestCode;
