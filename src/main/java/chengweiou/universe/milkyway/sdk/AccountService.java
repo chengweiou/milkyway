@@ -30,9 +30,10 @@ public class AccountService {
         if (e.getPerson() != null) paramList.add("person.id=" + e.getPerson().getId());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getAndromeda() + "/api/account")).timeout(Duration.ofMinutes(2))
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getAndromeda() + "/mg/account")).timeout(Duration.ofMinutes(2))
                 .method("POST", HttpRequest.BodyPublishers.ofString(param))
                 .header("content-type", "application/x-www-form-urlencoded")
+                .header("inServer", "true")
                 .build();
         HttpClient client = HttpClient.newHttpClient();
         try {
@@ -49,9 +50,10 @@ public class AccountService {
         paramList.add("person.id=" + e.getPerson().getId());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getAndromeda() + "/api/account/" + e.getId() + "/person")).timeout(Duration.ofMinutes(2))
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getAndromeda() + "/mg/account/" + e.getId() + "/person")).timeout(Duration.ofMinutes(2))
                 .method("PUT", HttpRequest.BodyPublishers.ofString(param))
                 .header("content-type", "application/x-www-form-urlencoded")
+                .header("inServer", "true")
                 .build();
         HttpClient client = HttpClient.newHttpClient();
         try {
