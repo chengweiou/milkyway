@@ -1,16 +1,8 @@
 package chengweiou.universe.milkyway.controller.me;
 
 
-import chengweiou.universe.blackhole.exception.FailException;
-import chengweiou.universe.blackhole.model.BasicRestCode;
-import chengweiou.universe.blackhole.model.Builder;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.milkyway.base.converter.Account;
-import chengweiou.universe.milkyway.data.Data;
-import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
-import chengweiou.universe.milkyway.model.entity.person.Person;
-import chengweiou.universe.milkyway.service.person.PersonDio;
 import com.google.gson.Gson;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +14,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import chengweiou.universe.blackhole.exception.FailException;
+import chengweiou.universe.blackhole.model.BasicRestCode;
+import chengweiou.universe.blackhole.model.Builder;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.milkyway.base.converter.Account;
+import chengweiou.universe.milkyway.data.Data;
+import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
+import chengweiou.universe.milkyway.model.entity.person.Person;
+import chengweiou.universe.milkyway.service.person.PersonDio;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -66,6 +68,9 @@ public class PersonTest {
 		String result = mvc.perform(MockMvcRequestBuilders.get("/me")
 				.header("loginAccount", new Gson().toJson(loginAccount))
 		).andReturn().getResponse().getContentAsString();
+		System.out.println("------------------");
+		System.out.println(result);
+		System.out.println("------------------");
 		Rest<Person> rest = Rest.from(result, Person.class);
 		Assertions.assertEquals(BasicRestCode.OK, rest.getCode());
 		Assertions.assertEquals("ou", rest.getData().getName());

@@ -6,6 +6,7 @@ server:
 spring:
   jackson:
     default-property-inclusion: NON_NULL
+
   datasource:
     url: jdbc:postgresql://127.0.0.1/universe?currentSchema=milkyway
     username: postgres

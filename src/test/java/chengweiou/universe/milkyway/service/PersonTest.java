@@ -1,6 +1,15 @@
 package chengweiou.universe.milkyway.service;
 
 
+import java.util.List;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.milkyway.data.Data;
@@ -9,14 +18,6 @@ import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.model.entity.person.PersonType;
 import chengweiou.universe.milkyway.service.person.PersonDio;
 import chengweiou.universe.milkyway.service.person.PersonService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-
-import java.util.List;
 
 @SpringBootTest
 @ActiveProfiles("test")

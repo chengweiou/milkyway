@@ -1,11 +1,11 @@
 package chengweiou.universe.milkyway.model.entity.pet;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import chengweiou.universe.blackhole.model.NotNullObj;
 import chengweiou.universe.blackhole.model.NullObj;
 import lombok.Data;
-
-import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Data
 public class Pet implements NotNullObj, Serializable {
