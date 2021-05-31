@@ -1,7 +1,10 @@
 server:
-  port: 0
+  port: 60006
   servlet:
     context-path: /milkyway
+  error:
+    whitelabel:
+      enabled: false
 
 spring:
   jackson:
