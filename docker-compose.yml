@@ -1,5 +1,5 @@
 services:
-  web:
+  milkyway:
     container_name: milkyway
     ports: 
       - 60001:8906

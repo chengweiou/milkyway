@@ -6,8 +6,4 @@ cp src/main/resources/log4j2.xml ~/Desktop/docker/universe/milkyway/config/
 
 docker-compose down
 docker-compose up -d
-# cp src/main/resources/log4j2.xml ~/Desktop/docker/universe/milkyway/config/
-# cd ~/Desktop/docker/universe/milkyway
-# docker stop milkyway
-# docker run --rm -it -d --name milkyway -p 60001:8906 --network net -v /Users/chengweiou/Desktop/docker/universe/milkyway:/proj/ -w /proj/ openjdk java -jar ser.jar
 
