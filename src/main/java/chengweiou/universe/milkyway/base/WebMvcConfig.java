@@ -1,11 +1,9 @@
 package chengweiou.universe.milkyway.base;
 
 
-import chengweiou.universe.milkyway.base.formatter.LocalDateFormatter;
-import chengweiou.universe.milkyway.base.formatter.LocalDateTimeFormatter;
-import chengweiou.universe.milkyway.interceptor.AuthInterceptorMe;
-import chengweiou.universe.milkyway.interceptor.AuthInterceptorMg;
-import chengweiou.universe.milkyway.interceptor.OptionsInterceptor;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -14,8 +12,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+import chengweiou.universe.milkyway.base.formatter.LocalDateFormatter;
+import chengweiou.universe.milkyway.base.formatter.LocalDateTimeFormatter;
+import chengweiou.universe.milkyway.interceptor.AuthInterceptorMe;
+import chengweiou.universe.milkyway.interceptor.AuthInterceptorMg;
+import chengweiou.universe.milkyway.interceptor.OptionsInterceptor;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -30,7 +31,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new AuthInterceptorMg()).addPathPatterns("/mg/**");
         registry.addInterceptor(new AuthInterceptorMe()).addPathPatterns("/me/**");
     }
-//    todo tip if use wormhole, cors in this project must trun off
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedMethods("*");
