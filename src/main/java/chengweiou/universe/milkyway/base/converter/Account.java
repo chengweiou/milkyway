@@ -1,13 +1,14 @@
 package chengweiou.universe.milkyway.base.converter;
 
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import chengweiou.universe.blackhole.model.NotNullObj;
 import chengweiou.universe.blackhole.model.NullObj;
 import chengweiou.universe.milkyway.model.entity.person.Person;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
-import java.io.Serializable;
 
 @Data
 public class Account implements NotNullObj, Serializable {

@@ -31,6 +31,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new AuthInterceptorMg()).addPathPatterns("/mg/**");
         registry.addInterceptor(new AuthInterceptorMe()).addPathPatterns("/me/**");
     }
+    
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedMethods("*");
