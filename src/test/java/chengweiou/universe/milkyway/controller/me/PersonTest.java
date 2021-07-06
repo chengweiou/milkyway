@@ -1,8 +1,6 @@
 package chengweiou.universe.milkyway.controller.me;
 
 
-import com.google.gson.Gson;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +17,7 @@ import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.util.GsonUtil;
 import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
@@ -44,7 +43,7 @@ public class PersonTest {
 	@Test
 	public void update() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.put("/me")
-				.header("loginAccount", new Gson().toJson(loginAccount))
+				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("name", "controller-test")
 		).andReturn().getResponse().getContentAsString();
 		Rest<Boolean> rest = Rest.from(result, Boolean.class);
@@ -57,7 +56,7 @@ public class PersonTest {
 	@Test
 	public void updateFail() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.put("/me")
-				.header("loginAccount", new Gson().toJson(loginAccount))
+				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 		).andReturn().getResponse().getContentAsString();
 		Rest<Boolean> rest = Rest.from(result);
 		Assertions.assertEquals(BasicRestCode.PARAM, rest.getCode());
@@ -66,7 +65,7 @@ public class PersonTest {
 	@Test
 	public void findMe() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.get("/me")
-				.header("loginAccount", new Gson().toJson(loginAccount))
+				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 		).andReturn().getResponse().getContentAsString();
 		System.out.println("------------------");
 		System.out.println(result);
