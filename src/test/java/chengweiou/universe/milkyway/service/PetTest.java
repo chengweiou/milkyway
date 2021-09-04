@@ -31,7 +31,7 @@ public class PetTest {
 
 	@Test
 	public void saveDelete() throws FailException {
-		Pet e = Builder.set("name", "service-test").set("age", 30).to(new Pet());
+		Pet e = Builder.set("person", data.personList.get(0)).set("name", "service-test").set("age", 30).to(new Pet());
 		service.save(e);
 		Assertions.assertEquals(true, e.getId()> 0);
 		service.delete(e);

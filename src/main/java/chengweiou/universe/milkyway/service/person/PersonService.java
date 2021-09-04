@@ -1,20 +1,47 @@
 package chengweiou.universe.milkyway.service.person;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import chengweiou.universe.blackhole.exception.FailException;
+import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 
-import java.util.List;
+@Service
+public class PersonService {
+    @Autowired
+    private PersonDio dio;
+    @Autowired
+    private AccountManager accountManager;
 
-public interface PersonService {
-    void save(Person e) throws FailException;
+    public void save(Person e) throws FailException {
+        dio.save(e);
+    }
 
-    void delete(Person e) throws FailException;
+    public void delete(Person e) throws FailException {
+        dio.delete(e);
+    }
 
-    long update(Person e);
+    public long update(Person e) { return dio.update(e); }
 
-    Person findById(Person e);
+    public Person findById(Person e) {
+        return dio.findById(e);
+    }
 
-    long count(SearchCondition searchCondition, Person sample);
-    List<Person> find(SearchCondition searchCondition, Person sample);
+    public long countByKey(Person e) {
+        return dio.countByKey(e);
+    }
+    public Person findByKey(Person e) {
+        return dio.findByKey(e);
+    }
+
+    public long count(SearchCondition searchCondition, Person sample) {
+        return dio.count(searchCondition, sample);
+    }
+    public List<Person> find(SearchCondition searchCondition, Person sample) {
+        return dio.find(searchCondition, sample);
+    }
 }

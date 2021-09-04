@@ -50,6 +50,20 @@ public class PersonTest {
 	}
 
 	@Test
+	public void countByKey() {
+		Person e = Builder.set("id", data.personList.get(0).getId()).to(new Person());
+		long count = service.countByKey(e);
+		Assertions.assertEquals(0, count);
+	}
+
+	@Test
+	public void findByKey() {
+		Person e = Builder.set("name", data.personList.get(0).getName()).to(new Person());
+		Person indb = service.findByKey(e);
+		Assertions.assertEquals(data.personList.get(0).getId(), indb.getId());
+	}
+
+	@Test
 	public void count() {
 		long count = service.count(new SearchCondition(), null);
 		Assertions.assertEquals(2, count);

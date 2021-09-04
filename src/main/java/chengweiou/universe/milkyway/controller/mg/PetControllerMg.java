@@ -19,6 +19,8 @@ public class PetControllerMg {
 
     @PostMapping("/pet")
     public Rest<Long> save(Pet e) throws ParamException, FailException, ProjException {
+        Valid.check("pet.person", e.getPerson()).isNotNull();
+        Valid.check("pet.person.id", e.getPerson().getId()).is().positive();
         Valid.check("pet.name", e.getName()).is().lengthIn(100);
         Valid.check("pet.type", e.getType()).isNotNull();
         service.save(e);
@@ -35,7 +37,7 @@ public class PetControllerMg {
     @PutMapping("/pet/{id}")
     public Rest<Boolean> update(Pet e) throws ParamException {
         Valid.check("pet.id", e.getId()).is().positive();
-        Valid.check("pet.type | name | age", e.getType(), e.getName(), e.getAge()).are().notAllNull();
+        Valid.check("pet.person.id | pet.type | name | age", e.getPerson(), e.getType(), e.getName(), e.getAge()).are().notAllNull();
         boolean success = service.update(e) == 1;
         return Rest.ok(success);
     }

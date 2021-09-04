@@ -1,19 +1,28 @@
 package chengweiou.universe.milkyway.base.dao;
 
 
-import chengweiou.universe.blackhole.util.LogUtil;
-import org.apache.ibatis.jdbc.SQL;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.ibatis.jdbc.SQL;
+
+import chengweiou.universe.blackhole.util.LogUtil;
+
 public class BaseDaoImpl<T> {
-    private static String table;
     public String save(T e) {
-        List<Field> fieldList = Arrays.asList(e.getClass().getDeclaredFields()).stream().filter(field -> !Modifier.isStatic(field.getModifiers()))
+        List<Field> fieldList = Arrays.asList(e.getClass().getDeclaredFields()).stream()
+                .filter(field -> {
+                    field.setAccessible(true);
+                    try {
+                        return !Modifier.isStatic(field.getModifiers()) && field.get(e)!=null;
+                    } catch (IllegalArgumentException | IllegalAccessException e1) {
+                        e1.printStackTrace();
+                        return false;
+                    }
+                })
                 .collect(Collectors.toList());
         return new SQL() {{
             INSERT_INTO(getTable(e));
@@ -59,22 +68,24 @@ public class BaseDaoImpl<T> {
             WHERE("id=#{id}");
         }}.toString();
     }
-// todo null 获取不到类型
-//    public String count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") T sample) {
-//        return baseFind(searchCondition, sample).SELECT("count(*)").toString();
-//    }
-//    public String find(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") T sample) {
-//        return baseFind(searchCondition, sample).SELECT("*").toString().concat(searchCondition.getOrderBy()).concat(searchCondition.getSqlLimit());
-//    }
-//    public SQL baseFind(SearchCondition searchCondition, T sample) {
-//        return new SQL() {{
-//            FROM(getTable(sample));
-//        }};
-//    }
+// // todo null 获取不到类型
+//     public String count(SearchCondition searchCondition, T sample) {
+//         return baseFind(searchCondition, sample).SELECT("count(*)").toString();
+//     }
+//     public String find(SearchCondition searchCondition, T sample) {
+//         return baseFind(searchCondition, sample).SELECT("*").toString().concat(searchCondition.getOrderBy()).concat(searchCondition.getSqlLimit());
+//     }
+//     public SQL baseFind(SearchCondition searchCondition, T sample) {
+//         return new SQL() {{
+//             FROM(getTable(sample));
+//         }};
+//     }
 
     private String getTable(T e) {
-        if (table != null) return table;
-        table = e.getClass().getSimpleName().substring(0, 1).toLowerCase() + e.getClass().getSimpleName().substring(1);
-        return table;
+        String name = e.getClass().getName();
+        // 遇到内部静态类，采用外部类名称
+        int end = name.contains("$") ? name.lastIndexOf("$") : name.length();
+        name = name.substring(name.lastIndexOf(".")+1, end);
+        return name.substring(0, 1).toLowerCase() + name.substring(1);
     }
 }

@@ -43,6 +43,7 @@ public class PetTest {
 	public void saveDelete() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.post("/mg/pet")
 				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
+				.param("person.id", data.personList.get(0).getId().toString())
 				.param("type", "DOG")
 				.param("name", "controller save")
 			).andReturn().getResponse().getContentAsString();
