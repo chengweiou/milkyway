@@ -19,6 +19,15 @@ public interface PetDao extends BaseDao<Pet.Dto> {
     @SelectProvider(type = Sql.class, method = "find")
     List<Pet.Dto> find(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Pet.Dto sample);
 
+    default SQL baseFind(SearchCondition searchCondition, Pet.Dto sample) {
+        return new SQL() {{
+            FROM("pet");
+            if (searchCondition.getK() != null) WHERE("name LIKE #{searchCondition.full.like.k}");
+            if (searchCondition.getIdList() != null) WHERE("id in ${searchCondition.foreachIdList}");
+            if (sample != null) {
+            }
+        }};
+    }
     class Sql {
 
         public String count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Pet.Dto sample) {

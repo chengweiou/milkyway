@@ -48,7 +48,7 @@ public class PetTest {
 				.param("name", "controller save")
 			).andReturn().getResponse().getContentAsString();
 		Rest<Long> saveRest = Rest.from(result, Long.class);
-		Assertions.assertEquals(BasicRestCode.OK, saveRest.getCode());
+		Assertions.assertEquals(BasicRestCode.OK, saveRest.getCode(), saveRest.getMessage());
 
 		result = mvc.perform(MockMvcRequestBuilders.delete("/mg/pet/" + saveRest.getData())
 				.header("loginAccount", GsonUtil.create().toJson(loginAccount))

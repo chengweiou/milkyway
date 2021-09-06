@@ -9,27 +9,34 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.springframework.stereotype.Repository;
 
+import chengweiou.universe.milkyway.base.entity.DtoEntity;
+
 @Repository
 @Mapper
-public interface BaseDao<T> {
+public interface BaseDao<Dto extends DtoEntity> {
     @InsertProvider(type = BaseDaoImpl.class, method = "save")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    long save(T e);
+    long save(Dto e);
 
     @DeleteProvider(type = BaseDaoImpl.class, method = "delete")
-    long delete(T e);
+    long delete(Dto e);
 
     @UpdateProvider(type = BaseDaoImpl.class, method = "update")
-    long update(T e);
+    long update(Dto e);
 
     @SelectProvider(type = BaseDaoImpl.class, method = "findById")
-    T findById(T e);
+    Dto findById(Dto e);
+
+    @SelectProvider(type = BaseDaoImpl.class, method = "countByKey")
+    long countByKey(Dto e);
+    @SelectProvider(type = BaseDaoImpl.class, method = "findByKey")
+    Dto findByKey(Dto e);
 
     // @SelectProvider(type = BaseDaoImpl.class, method = "count")
-    // long count(SearchCondition searchCondition, T sample);
+    // long count(SearchCondition searchCondition, Dto sample);
 
     // @SelectProvider(type = BaseDaoImpl.class, method = "find")
-    // List<T> find(SearchCondition searchCondition, T sample);
+    // List<Dto> find(SearchCondition searchCondition, Dto sample);
 
-    // SQL baseFind(SearchCondition searchCondition, T sample);
+    // SQL baseFind(SearchCondition searchCondition, Dto sample);
 }

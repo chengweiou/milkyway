@@ -1,22 +1,28 @@
 package chengweiou.universe.milkyway.model.entity.person;
 
 import java.io.Serializable;
+import java.security.Provider.Service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.BeanUtils;
 
 import chengweiou.universe.blackhole.model.NotNullObj;
 import chengweiou.universe.blackhole.model.NullObj;
+import chengweiou.universe.milkyway.base.entity.DtoEntity;
+import chengweiou.universe.milkyway.base.entity.DtoKey;
+import chengweiou.universe.milkyway.base.entity.ServiceEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
-public class Person implements NotNullObj, Serializable {
-    private Long id;
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class Person extends ServiceEntity {
     private PersonType type;
+
     private String name;
     private String phone;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
 
     public void fillNotRequire() {
         type = type!=null ? type : PersonType.GUEST;
@@ -24,12 +30,6 @@ public class Person implements NotNullObj, Serializable {
         phone = phone!=null ? phone : "";
     }
 
-    public void createAt() {
-        createAt = LocalDateTime.now();
-    }
-    public void updateAt() {
-        updateAt = LocalDateTime.now();
-    }
 
     public static final Person NULL = new Null();
     public static class Null extends Person implements NullObj {
@@ -41,13 +41,13 @@ public class Person implements NotNullObj, Serializable {
         return result;
     }
     @Data
-    public static class Dto {
-        private Long id;
+    @ToString(callSuper = true)
+    @EqualsAndHashCode(callSuper = true)
+    public static class Dto extends DtoEntity {
         private PersonType type;
+        @DtoKey
         private String name;
         private String phone;
-        private LocalDateTime createAt;
-        private LocalDateTime updateAt;
 
         public Person toBean() {
             Person result = new Person();

@@ -1,17 +1,8 @@
 package chengweiou.universe.milkyway.controller.mg;
 
 
-import chengweiou.universe.blackhole.exception.FailException;
-import chengweiou.universe.blackhole.model.BasicRestCode;
-import chengweiou.universe.blackhole.model.Builder;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.blackhole.util.GsonUtil;
-import chengweiou.universe.milkyway.base.converter.Account;
-import chengweiou.universe.milkyway.data.Data;
-import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
-import chengweiou.universe.milkyway.model.entity.person.Person;
-import chengweiou.universe.milkyway.service.person.PersonDio;
-import com.google.gson.Gson;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +15,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.List;
+import chengweiou.universe.blackhole.exception.FailException;
+import chengweiou.universe.blackhole.model.BasicRestCode;
+import chengweiou.universe.blackhole.model.Builder;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.util.GsonUtil;
+import chengweiou.universe.milkyway.base.converter.Account;
+import chengweiou.universe.milkyway.data.Data;
+import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
+import chengweiou.universe.milkyway.model.entity.person.Person;
+import chengweiou.universe.milkyway.service.person.PersonDio;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -72,8 +72,6 @@ public class PersonTest {
 
 	@Test
 	public void update() throws Exception {
-		String old = data.personList.get(0).getName();
-
 		String result = mvc.perform(MockMvcRequestBuilders.put("/mg/person/" + data.personList.get(0).getId())
 				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("name", "controller update1")

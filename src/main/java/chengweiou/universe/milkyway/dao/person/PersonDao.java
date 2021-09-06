@@ -17,10 +17,10 @@ import java.util.List;
 @Mapper
 public interface PersonDao extends BaseDao<Person.Dto> {
 
-    @Select("select count(*) from person where name=#{name}")
-    long countByKey(Person.Dto e);
-    @Select("select * from person where name=#{name}")
-    Person.Dto findByKey(Person.Dto e);
+    // @Select("select count(*) from person where name=#{name}")
+    // long countByKey(Person.Dto e);
+    // @Select("select * from person where name=#{name}")
+    // Person.Dto findByKey(Person.Dto e);
 
     @SelectProvider(type = Sql.class, method = "count")
     long count(@Param("searchCondition") SearchCondition searchCondition, @Param("sample") Person.Dto sample);

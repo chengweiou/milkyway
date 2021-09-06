@@ -5,15 +5,21 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.ibatis.jdbc.SQL;
 
 import chengweiou.universe.blackhole.util.LogUtil;
+import chengweiou.universe.milkyway.base.entity.DtoKey;
 
 public class BaseDaoImpl<T> {
     public String save(T e) {
-        List<Field> fieldList = Arrays.asList(e.getClass().getDeclaredFields()).stream()
+        List<Field> fieldList = Stream.of(
+                    Arrays.asList(e.getClass().getDeclaredFields()),
+                    Arrays.asList(e.getClass().getSuperclass().getDeclaredFields())
+                ).flatMap(List::stream)
                 .filter(field -> {
                     field.setAccessible(true);
                     try {
@@ -66,6 +72,32 @@ public class BaseDaoImpl<T> {
         return new SQL() {{
             SELECT("*"); FROM(getTable(e));
             WHERE("id=#{id}");
+        }}.toString();
+    }
+
+    public String countByKey(T e) {
+        List<String> fieldNameList = Arrays.asList(e.getClass().getDeclaredFields()).stream().filter(field -> !Modifier.isStatic(field.getModifiers()))
+                .filter(field -> field.isAnnotationPresent(DtoKey.class))
+                .map(Field::getName)
+                .collect(Collectors.toList());
+        return new SQL() {{
+            SELECT("count(*)"); FROM(getTable(e));
+            WHERE(
+                fieldNameList.stream().map(name -> name+"=#{"+name+"}").collect(Collectors.joining(" and "))
+            );
+        }}.toString();
+    }
+
+    public String findByKey(T e) {
+        List<String> fieldNameList = Arrays.asList(e.getClass().getDeclaredFields()).stream().filter(field -> !Modifier.isStatic(field.getModifiers()))
+                .filter(field -> field.isAnnotationPresent(DtoKey.class))
+                .map(Field::getName)
+                .collect(Collectors.toList());
+        return new SQL() {{
+            SELECT("*"); FROM(getTable(e));
+            WHERE(
+                fieldNameList.stream().map(name -> name+"=#{"+name+"}").collect(Collectors.joining(" and "))
+            );
         }}.toString();
     }
 // // todo null 获取不到类型
