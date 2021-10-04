@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -46,7 +45,11 @@ public class BaseDaoImpl<T> {
     }
 
     public String update(T e) {
-        List<Field> fieldList = Arrays.asList(e.getClass().getDeclaredFields()).stream().filter(field -> !Modifier.isStatic(field.getModifiers()))
+        List<Field> fieldList = Stream.of(
+                    Arrays.asList(e.getClass().getDeclaredFields()),
+                    Arrays.asList(e.getClass().getSuperclass().getDeclaredFields())
+                ).flatMap(List::stream)
+                .filter(field -> !Modifier.isStatic(field.getModifiers()))
                 .filter(f -> !f.getName().equals("id") && !f.getName().equals("createAt"))
                 .filter(f -> {
                     try {
