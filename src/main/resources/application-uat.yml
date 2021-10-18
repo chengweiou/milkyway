@@ -8,5 +8,4 @@ spring:
     password: 123456
 
 site:
-  andromeda: http://universe-andromeda:8906/andromeda
-
+  andromeda: http://andromeda:8906/andromeda
