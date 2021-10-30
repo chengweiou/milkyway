@@ -1,16 +1,11 @@
 package chengweiou.universe.milkyway.model.entity.person;
 
-import java.io.Serializable;
-import java.security.Provider.Service;
-import java.time.LocalDateTime;
-
 import org.springframework.beans.BeanUtils;
 
-import chengweiou.universe.blackhole.model.NotNullObj;
 import chengweiou.universe.blackhole.model.NullObj;
-import chengweiou.universe.milkyway.base.entity.DtoEntity;
-import chengweiou.universe.milkyway.base.entity.DtoKey;
-import chengweiou.universe.milkyway.base.entity.ServiceEntity;
+import chengweiou.universe.blackhole.model.entity.DtoEntity;
+import chengweiou.universe.blackhole.model.entity.DtoKey;
+import chengweiou.universe.blackhole.model.entity.ServiceEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

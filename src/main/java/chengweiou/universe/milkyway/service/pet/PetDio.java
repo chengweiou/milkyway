@@ -1,6 +1,7 @@
 package chengweiou.universe.milkyway.service.pet;
 
 
+import chengweiou.universe.blackhole.dao.BaseSQL;
 import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.milkyway.dao.pet.PetDao;
 import chengweiou.universe.milkyway.model.SearchCondition;
@@ -43,13 +44,26 @@ public class PetDio {
     }
 
     public long count(SearchCondition searchCondition, Pet sample) {
-        return dao.count(searchCondition, sample!=null ? sample.toDto() : null);
+        Pet.Dto dtoSample = sample!=null ? sample.toDto() : Pet.NULL.toDto();
+        String where = baseFind(searchCondition, dtoSample);
+        return dao.count(searchCondition, dtoSample, where);
     }
 
     public List<Pet> find(SearchCondition searchCondition, Pet sample) {
         searchCondition.setDefaultSort("updateAt");
-        List<Pet.Dto> dtoList = dao.find(searchCondition, sample!=null ? sample.toDto() : null);
+        Pet.Dto dtoSample = sample!=null ? sample.toDto() : Pet.NULL.toDto();
+        String where = baseFind(searchCondition, dtoSample);
+        List<Pet.Dto> dtoList = dao.find(searchCondition, dtoSample, where);
         List<Pet> result = dtoList.stream().map(e -> e.toBean()).collect(Collectors.toList());
         return result;
+    }
+
+    private String baseFind(SearchCondition searchCondition, Pet.Dto sample) {
+        return new BaseSQL() {{
+            if (searchCondition.getK() != null) WHERE("name LIKE #{searchCondition.full.like.k}");
+            if (searchCondition.getIdList() != null) WHERE("id in ${searchCondition.foreachIdList}");
+            if (sample != null) {
+            }
+        }}.toString();
     }
 }

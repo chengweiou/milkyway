@@ -4,7 +4,7 @@
 // import org.springframework.stereotype.Service;
 
 // import chengweiou.universe.blackhole.exception.FailException;
-// import chengweiou.universe.milkyway.base.entity.ServiceEntity;
+// import chengweiou.universe.blackhole.model.entity.ServiceEntity;
 
 // @Service
 // public abstract class BaseService<T extends ServiceEntity> {

@@ -13,9 +13,9 @@
 
 // import chengweiou.universe.blackhole.exception.FailException;
 // import chengweiou.universe.milkyway.base.dao.BaseDao;
-// import chengweiou.universe.milkyway.base.entity.DtoEntity;
-// import chengweiou.universe.milkyway.base.entity.DtoKey;
-// import chengweiou.universe.milkyway.base.entity.ServiceEntity;
+// import chengweiou.universe.blackhole.model.entity.DtoEntity;
+// import chengweiou.universe.blackhole.model.entity.DtoKey;
+// import chengweiou.universe.blackhole.model.entity.ServiceEntity;
 
 // @Component
 // public abstract class BaseDio<T extends ServiceEntity, Dto extends DtoEntity> {
