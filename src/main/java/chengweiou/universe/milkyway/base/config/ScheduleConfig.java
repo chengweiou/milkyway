@@ -1,4 +1,4 @@
-package chengweiou.universe.milkyway.base.async;
+package chengweiou.universe.milkyway.base.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;

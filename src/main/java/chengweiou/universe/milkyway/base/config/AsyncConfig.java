@@ -1,4 +1,4 @@
-package chengweiou.universe.milkyway.base.async;
+package chengweiou.universe.milkyway.base.config;
 
 import java.util.concurrent.Executor;
 
