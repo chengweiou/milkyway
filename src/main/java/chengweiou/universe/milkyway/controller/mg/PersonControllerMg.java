@@ -25,7 +25,7 @@ public class PersonControllerMg {
     @Autowired
     private AccountManager accountManager;
 
-    @Transactional
+    @Transactional(rollbackFor = FailException.class)
     @PostMapping("/person")
     public Rest<Long> save(Person e, Account account) throws ParamException, FailException, ProjException {
         Valid.check("person.type", e.getType()).isNotNull();

@@ -21,7 +21,7 @@ public class AccountController {
     @Autowired
     private AccountManager accountManager;
 
-    @Transactional
+    @Transactional(rollbackFor = FailException.class)
     @PostMapping("/register")
     public Rest<Long> save(Account account) throws ParamException, FailException {
         Valid.check("account.username", account.getUsername()).is().lengthIn(1, 30);
