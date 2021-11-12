@@ -6,8 +6,8 @@ CREATE TABLE person(
     name text NOT NULL,
     type text NOT NULL,
     phone text NOT NULL,
-    createAt timestamp without time zone NOT NULL,
-    updateAt timestamp without time zone NOT NULL,
+    createAt timestamp with time zone NOT NULL,
+    updateAt timestamp with time zone NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE pet(
     name text NOT NULL,
     type text NOT NULL,
     age integer NOT NULL,
-    createAt timestamp without time zone NOT NULL,
-    updateAt timestamp without time zone NOT NULL,
+    createAt timestamp with time zone NOT NULL,
+    updateAt timestamp with time zone NOT NULL,
     PRIMARY KEY (id)
 );
