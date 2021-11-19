@@ -18,6 +18,8 @@ public class Account implements NotNullObj, Serializable {
     @JsonIgnore
     private String password;
     private String extra;
+    private String phone;
+    private String email;
     public static final Account NULL = new Account.Null();
     public static class Null extends Account implements NullObj {
         @Override

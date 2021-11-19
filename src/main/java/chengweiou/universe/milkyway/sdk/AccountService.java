@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class AccountService {
     @Autowired
     private SiteConfig siteConfig;
-    public Rest save(Account e) {
+    public Rest<Long> save(Account e) {
         List<String> paramList = new ArrayList<>();
         paramList.add("username=" + e.getUsername());
         paramList.add("password=" + e.getPassword());
@@ -61,6 +61,27 @@ public class AccountService {
             return Rest.from(response, Boolean.class);
         } catch (InterruptedException | ExecutionException ex) {
             LogUtil.e("account update fail: accountId: " + e.getId() + ", personId: " + e.getPerson().getId(), ex);
+            return Rest.fail(BasicRestCode.FAIL);
+        }
+    }
+
+    public Rest<Boolean> updateByPerson(Account e) {
+        List<String> paramList = new ArrayList<>();
+        paramList.add("phone=" + e.getPhone());
+        paramList.add("email=" + e.getEmail());
+        String param = paramList.stream().collect(Collectors.joining("&"));
+
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getAndromeda() + "/mg/account/person/" + e.getPerson().getId())).timeout(Duration.ofMinutes(2))
+                .method("PUT", HttpRequest.BodyPublishers.ofString(param))
+                .header("content-type", "application/x-www-form-urlencoded")
+                .header("inServer", "true")
+                .build();
+        HttpClient client = HttpClient.newHttpClient();
+        try {
+            String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).get();
+            return Rest.from(response, Boolean.class);
+        } catch (InterruptedException | ExecutionException ex) {
+            LogUtil.e("account update fail: personId: " + e.getPerson().getId(), ex);
             return Rest.fail(BasicRestCode.FAIL);
         }
     }
