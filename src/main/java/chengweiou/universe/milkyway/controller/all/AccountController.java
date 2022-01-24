@@ -8,6 +8,7 @@ import chengweiou.universe.blackhole.param.Valid;
 import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import chengweiou.universe.milkyway.model.entity.person.PersonType;
+import chengweiou.universe.milkyway.service.person.PersonDio;
 import chengweiou.universe.milkyway.service.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
     @Autowired
     private PersonService service;
+    @Autowired
+    private PersonDio dio;
     @Autowired
     private AccountManager accountManager;
 
@@ -31,7 +34,7 @@ public class AccountController {
         account.getPerson().setType(PersonType.MEMBER);
         account.setExtra(account.getPerson().getType().toString());
         accountManager.save(account);
-        service.save(account.getPerson());
+        dio.save(account.getPerson());
         accountManager.updatePerson(account);
 //        if (count != 1) throw new FailException();
         return Rest.ok(account.getPerson().getId());

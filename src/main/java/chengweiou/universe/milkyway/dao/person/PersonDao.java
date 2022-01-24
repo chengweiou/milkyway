@@ -10,4 +10,5 @@ import chengweiou.universe.milkyway.model.entity.person.Person;
 @Repository
 @Mapper
 public interface PersonDao extends BaseDao<Person.Dto> {
+
 }

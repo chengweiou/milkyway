@@ -16,50 +16,107 @@ import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.pet.Pet;
 import chengweiou.universe.milkyway.service.pet.PetDio;
-import chengweiou.universe.milkyway.service.pet.PetService;
 
 @SpringBootTest
 @ActiveProfiles("test")
 public class PetTest {
 	@Autowired
-	private PetService service;
+	private PetDio dio;
 	@Autowired
 	private Data data;
 
-	@Autowired
-	private PetDio dio;
-
 	@Test
 	public void saveDelete() throws FailException {
-		Pet e = Builder.set("person", data.personList.get(0)).set("name", "service-test").set("age", 30).to(new Pet());
-		service.save(e);
+		Pet e = Builder.set("person", data.personList.get(0)).set("name", "dio-test").set("age", 30).to(new Pet());
+		dio.save(e);
 		Assertions.assertEquals(true, e.getId()> 0);
-		service.delete(e);
+		Pet indb = dio.findById(e);
+		Assertions.assertEquals(e.getId(), indb.getId());
+		dio.delete(e);
+		indb = dio.findById(e);
+		Assertions.assertEquals(null, indb.getId());
+	}
+
+	@Test
+	public void saveDeleteBySample() throws FailException {
+		Pet e = Builder.set("person", data.personList.get(0)).set("name", "dio-test").set("age", 30).to(new Pet());
+		dio.save(e);
+		Assertions.assertEquals(true, e.getId()> 0);
+		dio.deleteBySample(e, e);
+		Pet indb = dio.findById(e);
+		Assertions.assertEquals(null, indb.getId());
+	}
+	@Test
+	public void saveDeleteByIdList() throws FailException {
+		Pet e = Builder.set("person", data.personList.get(0)).set("name", "dio-test").set("age", 30).to(new Pet());
+		dio.save(e);
+		Assertions.assertEquals(true, e.getId()> 0);
+		dio.deleteByIdList(e, List.of(e.getId()));
+		Pet indb = dio.findById(e);
+		Assertions.assertEquals(null, indb.getId());
 	}
 
 	@Test
 	public void update() {
-		Pet e = Builder.set("id", data.petList.get(0).getId()).set("name", "service update").to(new Pet());
-		long count = service.update(e);
+		Pet e = Builder.set("id", data.petList.get(0).getId()).set("name", "dio update").to(new Pet());
+		long count = dio.update(e);
 		Assertions.assertEquals(1, count);
-		Pet indb = service.findById(e);
-		Assertions.assertEquals("service update", indb.getName());
+		Pet indb = dio.findById(e);
+		Assertions.assertEquals("dio update", indb.getName());
+
+		dio.update(data.petList.get(0));
+	}
+
+	@Test
+	public void updateBySample() {
+		Pet e = Builder.set("name", "dio update").to(new Pet());
+		Pet sample = Builder.set("name", data.petList.get(0).getName()).to(new Pet());
+		long count = dio.updateBySample(e, sample);
+		Assertions.assertEquals(1, count);
+		Pet indb = dio.findById(data.petList.get(0));
+		Assertions.assertEquals("dio update", indb.getName());
+
+		dio.update(data.petList.get(0));
+	}
+
+	@Test
+	public void updateByIdList() {
+		Pet e = Builder.set("name", "dio update").to(new Pet());
+		List<Long> idList = List.of(data.petList.get(0).getId());
+		long count = dio.updateByIdList(e, idList);
+		Assertions.assertEquals(1, count);
+		Pet indb = dio.findById(data.petList.get(0));
+		Assertions.assertEquals("dio update", indb.getName());
 
 		dio.update(data.petList.get(0));
 	}
 
 	@Test
 	public void count() {
-		long count = service.count(new SearchCondition(), null);
+		long count = dio.count(new SearchCondition(), null);
 		Assertions.assertEquals(2, count);
 	}
 
 	@Test
 	public void find() {
 		SearchCondition searchCondition = Builder.set("k", "b").to(new SearchCondition());
-		List<Pet> list = service.find(searchCondition, null);
+		List<Pet> list = dio.find(searchCondition, null);
 		Assertions.assertEquals(1, list.size());
 		Assertions.assertEquals(data.petList.get(1).getId(), list.get(0).getId());
+	}
+
+	@Test
+	public void findYoung() {
+		SearchCondition searchCondition = Builder.set("k", "b").to(new SearchCondition());
+		Pet sample = Builder.set("age", "1").to(new Pet());
+		List<Pet> list = dio.findYounger(searchCondition, sample);
+		Assertions.assertEquals(0, list.size());
+	}
+
+	@Test
+	public void findOld() {
+		Pet pet = dio.findOldest();
+		Assertions.assertEquals(data.petList.get(1).getId(), pet.getId());
 	}
 
 	@BeforeEach

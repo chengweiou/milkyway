@@ -33,18 +33,39 @@ public class PersonTest {
 	@Test
 	public void saveDelete() throws FailException {
 		Person e = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").to(new Person());
-		service.save(e);
+		dio.save(e);
 		Assertions.assertEquals(true, e.getId()> 0);
-		service.delete(e);
+		dio.delete(e);
+	}
+
+	@Test
+	public void saveDeleteByKey() throws FailException {
+		Person e = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").to(new Person());
+		dio.save(e);
+		Assertions.assertEquals(true, e.getId()> 0);
+		dio.deleteByKey(Builder.set("name", "service-test").to(new Person()));
+		Person indb = dio.findById(e);
+		Assertions.assertEquals(null, indb.getId());
 	}
 
 	@Test
 	public void update() {
 		Person e = Builder.set("id", data.personList.get(0).getId()).set("name", "service update").to(new Person());
-		long count = service.update(e);
+		long count = dio.update(e);
 		Assertions.assertEquals(1, count);
-		Person indb = service.findById(e);
+		Person indb = dio.findById(e);
 		Assertions.assertEquals("service update", indb.getName());
+
+		dio.update(data.personList.get(0));
+	}
+
+	@Test
+	public void updateByKey() {
+		Person e = Builder.set("name", data.personList.get(0).getName()).set("phone", "9998887776").to(new Person());
+		long count = dio.updateByKey(e);
+		Assertions.assertEquals(1, count);
+		Person indb = dio.findById(data.personList.get(0));
+		Assertions.assertEquals("9998887776", indb.getPhone());
 
 		dio.update(data.personList.get(0));
 	}
@@ -52,29 +73,38 @@ public class PersonTest {
 	@Test
 	public void countByKey() {
 		Person e = Builder.set("id", data.personList.get(0).getId()).to(new Person());
-		long count = service.countByKey(e);
+		long count = dio.countByKey(e);
 		Assertions.assertEquals(0, count);
 	}
 
 	@Test
 	public void findByKey() {
 		Person e = Builder.set("name", data.personList.get(0).getName()).to(new Person());
-		Person indb = service.findByKey(e);
+		Person indb = dio.findByKey(e);
 		Assertions.assertEquals(data.personList.get(0).getId(), indb.getId());
 	}
 
 	@Test
 	public void count() {
-		long count = service.count(new SearchCondition(), null);
+		long count = dio.count(new SearchCondition(), null);
 		Assertions.assertEquals(2, count);
 	}
 
 	@Test
 	public void find() {
 		SearchCondition searchCondition = Builder.set("k", "ch").to(new SearchCondition());
-		List<Person> list = service.find(searchCondition, null);
+		List<Person> list = dio.find(searchCondition, null);
 		Assertions.assertEquals(1, list.size());
 		Assertions.assertEquals(data.personList.get(1).getId(), list.get(0).getId());
+	}
+
+	@Test
+	public void register() throws FailException {
+		// todo 放到service里面去
+		// Person e = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").to(new Person());
+		// service.register(e);
+		// Assertions.assertEquals(true, e.getId()> 0);
+		// dio.delete(e);
 	}
 
 	@BeforeEach
