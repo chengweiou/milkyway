@@ -45,7 +45,7 @@ public class PetDio extends BaseDio<Pet, Pet.Dto> {
         searchCondition.setDefaultSort("updateAt");
         Pet.Dto dtoSample = sample!=null ? sample.toDto() : Pet.NULL.toDto();
         List<Pet.Dto> dtoList = dao.findYounger(searchCondition, dtoSample);
-        List<Pet> result = dtoList.stream().map(e -> e.toBean()).collect(Collectors.toList());
+        List<Pet> result = dtoList.stream().map(e -> e.toBean()).toList();
         return result;
     }
 

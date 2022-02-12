@@ -24,7 +24,7 @@ public class Data {
     public List<Pet> petList;
 
     public void init() {
-        personList = personDio.find(new SearchCondition(), null).stream().sorted(Comparator.comparingLong(Person::getId)).collect(Collectors.toList());
-        petList = petDio.find(new SearchCondition(), null).stream().sorted(Comparator.comparingLong(Pet::getId)).collect(Collectors.toList());
+        personList = personDio.find(new SearchCondition(), null).stream().sorted(Comparator.comparingLong(Person::getId)).toList();
+        petList = petDio.find(new SearchCondition(), null).stream().sorted(Comparator.comparingLong(Pet::getId)).toList();
     }
 }

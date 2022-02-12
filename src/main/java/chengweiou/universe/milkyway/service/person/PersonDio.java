@@ -21,6 +21,8 @@ public class PersonDio extends BaseDio<Person, Person.Dto> {
     protected Class getTClass() { return Person.class; };
     @Override
     protected String getDefaultSort() { return "updateAt"; };
+    @Override
+    protected boolean getDefaultSortAz() { return false; };
 
     @Override
     protected String baseFind(AbstractSearchCondition searchCondition, Person.Dto sample) {
