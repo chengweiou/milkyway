@@ -51,7 +51,7 @@ public class PetTest {
 		Pet e = Builder.set("person", data.personList.get(0)).set("name", "dio-test").set("age", 30).to(new Pet());
 		dio.save(e);
 		Assertions.assertEquals(true, e.getId()> 0);
-		dio.deleteByIdList(List.of(e.getId()));
+		dio.deleteByIdList(List.of(e.getId().toString()));
 		Pet indb = dio.findById(e);
 		Assertions.assertEquals(null, indb.getId());
 	}
@@ -82,7 +82,7 @@ public class PetTest {
 	@Test
 	public void updateByIdList() {
 		Pet e = Builder.set("name", "dio update").to(new Pet());
-		List<Long> idList = List.of(data.petList.get(0).getId());
+		List<String> idList = List.of(data.petList.get(0).getId().toString());
 		long count = dio.updateByIdList(e, idList);
 		Assertions.assertEquals(1, count);
 		Pet indb = dio.findById(data.petList.get(0));

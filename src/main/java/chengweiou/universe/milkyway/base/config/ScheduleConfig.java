@@ -5,6 +5,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 // todo tip: 使用时开启
 @Configuration
-// @EnableScheduling
+@EnableScheduling
 public class ScheduleConfig {
 }

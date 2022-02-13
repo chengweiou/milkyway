@@ -9,7 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 // todo tip: 使用时开启
 @Configuration
-// @EnableAsync
+@EnableAsync
 public class AsyncConfig {
     @Bean
     public Executor taskExecutor() {
