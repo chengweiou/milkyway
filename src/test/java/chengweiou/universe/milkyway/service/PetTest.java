@@ -51,7 +51,7 @@ public class PetTest {
 		Pet e = Builder.set("person", data.personList.get(0)).set("name", "dio-test").set("age", 30).to(new Pet());
 		dio.save(e);
 		Assertions.assertEquals(true, e.getId()> 0);
-		dio.deleteByIdList(e, List.of(e.getId()));
+		dio.deleteByIdList(List.of(e.getId()));
 		Pet indb = dio.findById(e);
 		Assertions.assertEquals(null, indb.getId());
 	}
