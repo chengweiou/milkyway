@@ -1,6 +1,6 @@
 server:
   port: 8906
-      
+
 spring:
   datasource:
     url: jdbc:postgresql://pgsql/universe?currentSchema=milkyway
@@ -9,3 +9,5 @@ spring:
 
 site:
   andromeda: http://andromeda:8906/andromeda
+  carina: http://carina:8906/carina
+  leob: http://leob:8906/leob

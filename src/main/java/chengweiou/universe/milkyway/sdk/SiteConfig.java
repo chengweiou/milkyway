@@ -10,4 +10,6 @@ import org.springframework.stereotype.Component;
 @Data
 public class SiteConfig {
     private String andromeda;
+    private String carina;
+    private String leob;
 }

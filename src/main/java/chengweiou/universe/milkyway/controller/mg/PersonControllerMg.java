@@ -8,6 +8,7 @@ import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.blackhole.param.Valid;
 import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
+import chengweiou.universe.milkyway.manager.carina.CarinaPersonManager;
 import chengweiou.universe.milkyway.model.SearchCondition;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.service.person.PersonDio;
@@ -27,6 +28,8 @@ public class PersonControllerMg {
     private PersonDio dio;
     @Autowired
     private AccountManager accountManager;
+    @Autowired
+    private CarinaPersonManager carinaPersonManager;
 
     @Transactional(rollbackFor = FailException.class)
     @PostMapping("/person")
@@ -36,7 +39,10 @@ public class PersonControllerMg {
         dio.save(e);
         account.setPerson(e);
         account.setExtra(e.getType().toString());
+        account.setPhone(e.getPhone());
+        account.setEmail(e.getEmail());
         accountManager.save(account);
+        carinaPersonManager.save(e);
         return Rest.ok(e.getId());
     }
 

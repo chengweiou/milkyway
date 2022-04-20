@@ -26,6 +26,12 @@ public class AccountService {
         List<String> paramList = new ArrayList<>();
         paramList.add("username=" + e.getUsername());
         paramList.add("password=" + e.getPassword());
+        paramList.add("phone=" + e.getPhone());
+        paramList.add("email=" + e.getEmail());
+        // paramList.add("wechat=" + e.getWechat());
+        // paramList.add("weibo=" + e.getWeibo());
+        // paramList.add("google=" + e.getGoogle());
+        // paramList.add("facebook=" + e.getFacebook());
         paramList.add("extra=" + e.getExtra());
         if (e.getPerson() != null) paramList.add("person.id=" + e.getPerson().getId());
         String param = paramList.stream().collect(Collectors.joining("&"));

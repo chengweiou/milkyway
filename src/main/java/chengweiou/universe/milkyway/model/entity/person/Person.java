@@ -18,11 +18,13 @@ public class Person extends ServiceEntity {
 
     private String name;
     private String phone;
+    private String email;
 
     public void fillNotRequire() {
         type = type!=null ? type : PersonType.GUEST;
         name = name!=null ? name : "";
         phone = phone!=null ? phone : "";
+        email = email!=null ? email : "";
     }
 
 
@@ -43,6 +45,7 @@ public class Person extends ServiceEntity {
         @DtoKey
         private String name;
         private String phone;
+        private String email;
 
         public Person toBean() {
             Person result = new Person();

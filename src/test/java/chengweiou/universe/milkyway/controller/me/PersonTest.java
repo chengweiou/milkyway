@@ -21,6 +21,7 @@ import chengweiou.universe.blackhole.util.GsonUtil;
 import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
+import chengweiou.universe.milkyway.manager.carina.CarinaPersonManager;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.service.person.PersonDio;
 
@@ -33,6 +34,8 @@ public class PersonTest {
 	// mock 的话，config配置mock类，这里下面写mock值
 	@Autowired
 	private AccountManager accountManager;
+	@Autowired
+	private CarinaPersonManager carinaPersonManager;
 	private Account loginAccount;
 	@Autowired
 	private Data data;
@@ -89,5 +92,6 @@ public class PersonTest {
 	@BeforeEach
 	public void mock() throws FailException {
 		Mockito.when(accountManager.save(Mockito.any())).thenReturn(1L);
+		Mockito.when(carinaPersonManager.save(Mockito.any())).thenReturn(1L);
 	}
 }
