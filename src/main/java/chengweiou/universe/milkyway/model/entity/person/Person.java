@@ -15,16 +15,17 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 public class Person extends ServiceEntity {
     private PersonType type;
-
     private String name;
     private String phone;
     private String email;
+    private String imgsrc;
 
     public void fillNotRequire() {
         type = type!=null ? type : PersonType.GUEST;
         name = name!=null ? name : "";
         phone = phone!=null ? phone : "";
         email = email!=null ? email : "";
+        imgsrc = imgsrc!=null ? imgsrc : "";
     }
 
 
@@ -46,6 +47,7 @@ public class Person extends ServiceEntity {
         private String name;
         private String phone;
         private String email;
+        private String imgsrc;
 
         public Person toBean() {
             Person result = new Person();

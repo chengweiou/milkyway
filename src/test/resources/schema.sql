@@ -7,6 +7,7 @@ CREATE TABLE person(
     type text NOT NULL,
     phone text NOT NULL,
     email text NOT NULL,
+    imgsrc text NOT NULL,
     createAt timestamp with time zone NOT NULL,
     updateAt timestamp with time zone NOT NULL,
     PRIMARY KEY (id)

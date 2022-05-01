@@ -4,6 +4,7 @@ package chengweiou.universe.milkyway.controller.mg;
 import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.blackhole.exception.ParamException;
 import chengweiou.universe.blackhole.exception.ProjException;
+import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.blackhole.param.Valid;
 import chengweiou.universe.milkyway.base.converter.Account;
@@ -36,11 +37,14 @@ public class PersonControllerMg {
     public Rest<Long> save(Person e, Account account) throws ParamException, FailException, ProjException {
         Valid.check("person.type", e.getType()).isNotNull();
         Valid.check("person.name", e.getName()).is().lengthIn(100);
-        dio.save(e);
+        service.save(e);
+        account.setUsername(account.getUsername());
+        account.setPassword(account.getPassword());
         account.setPerson(e);
         account.setExtra(e.getType().toString());
         account.setPhone(e.getPhone());
         account.setEmail(e.getEmail());
+        account.setActive(true);
         accountManager.save(account);
         carinaPersonManager.save(e);
         return Rest.ok(e.getId());
@@ -54,10 +58,15 @@ public class PersonControllerMg {
     }
 
     @PutMapping("/person/{id}")
-    public Rest<Boolean> update(Person e) throws ParamException {
+    public Rest<Boolean> update(Person e) throws ParamException, FailException, ProjException {
         Valid.check("person.id", e.getId()).is().positive();
         Valid.check("person.type | name | phone", e.getType(), e.getName(), e.getPhone()).are().notAllNull();
-        boolean success = dio.update(e) == 1;
+        boolean success = service.update(e) == 1;
+        if (success) {
+            if (e.getName() != null || e.getImgsrc()!=null) carinaPersonManager.update(e);
+            if (e.getPhone() != null || e.getEmail() != null) accountManager.updateByPerson(
+                Builder.set("person", e).set("phone", e.getPhone()).set("email", e.getEmail()).to(new Account()));
+        }
         return Rest.ok(success);
     }
 

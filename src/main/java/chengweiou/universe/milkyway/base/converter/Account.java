@@ -24,6 +24,7 @@ public class Account implements NotNullObj, Serializable {
     private String weibo;
     private String google;
     private String facebook;
+    private Boolean active;
     public static final Account NULL = new Account.Null();
     public static class Null extends Account implements NullObj {
         @Override

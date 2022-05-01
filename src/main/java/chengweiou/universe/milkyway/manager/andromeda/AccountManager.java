@@ -25,4 +25,9 @@ public class AccountManager {
         if (rest.getCode() != BasicRestCode.OK) throw new FailException("account service return code of: " + rest.getCode() + ". and message:" + rest.getMessage());
         return rest.getData();
     }
+    public Boolean updateByPerson(Account e) throws FailException {
+        Rest<Boolean> rest = accountService.updateByPerson(e);
+        if (rest.getCode() != BasicRestCode.OK) throw new FailException("account service return code of: " + rest.getCode() + ". and message:" + rest.getMessage());
+        return rest.getData();
+    }
 }

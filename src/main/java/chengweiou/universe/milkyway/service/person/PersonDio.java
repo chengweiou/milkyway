@@ -27,7 +27,7 @@ public class PersonDio extends BaseDio<Person, Person.Dto> {
     @Override
     protected String baseFind(AbstractSearchCondition searchCondition, Person.Dto sample) {
         return new BaseSQL() {{
-            if (searchCondition.getK() != null) WHERE("(name LIKE #{searchCondition.like.k} or phone LIKE #{searchCondition.like.k})");
+            if (searchCondition.getK() != null) WHERE("(name LIKE #{searchCondition.like.k} or phone LIKE #{searchCondition.like.k}) or email LIKE #{searchCondition.like.k}");
             if (searchCondition.getMinDate() != null) WHERE("createAt >= #{searchCondition.minDate}::date");
             if (searchCondition.getIdList() != null) WHERE("id in ${searchCondition.foreachIdList}");
             if (sample != null) {
@@ -36,4 +36,26 @@ public class PersonDio extends BaseDio<Person, Person.Dto> {
         }}.toString();
     }
 
+    public long countByPhone(Person e) {
+        return dao.countByPhone(e.toDto());
+    }
+    public Person findByPhone(Person e) {
+        Person.Dto result = dao.findByPhone(e.toDto());
+        if (result == null) return Person.NULL;
+        return result.toBean();
+    }
+    public long countByEmail(Person e) {
+        return dao.countByEmail(e.toDto());
+    }
+    public Person findByEmail(Person e) {
+        Person.Dto result = dao.findByEmail(e.toDto());
+        if (result == null) return Person.NULL;
+        return result.toBean();
+    }
+    public long countByPhoneOfOther(Person e) {
+        return dao.countByPhoneOfOther(e.toDto());
+    }
+    public long countByEmailOfOther(Person e) {
+        return dao.countByEmailOfOther(e.toDto());
+    }
 }

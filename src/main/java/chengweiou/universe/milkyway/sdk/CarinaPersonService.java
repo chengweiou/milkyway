@@ -27,7 +27,7 @@ public class CarinaPersonService {
         List<String> paramList = new ArrayList<>();
         paramList.add("id=" + e.getId());
         paramList.add("name=" + e.getName());
-        // paramList.add("imgsrc=" + e.getImgsrc());
+        paramList.add("imgsrc=" + e.getImgsrc());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getCarina() + "/mg/person")).timeout(Duration.ofMinutes(2))
@@ -48,7 +48,7 @@ public class CarinaPersonService {
     public Rest<Boolean> update(Person e) {
         List<String> paramList = new ArrayList<>();
         if (e.getName()!=null) paramList.add("name=" + e.getName());
-        // if (e.getImgsrc()!=null) paramList.add("imgsrc=" + e.getImgsrc());
+        if (e.getImgsrc()!=null) paramList.add("imgsrc=" + e.getImgsrc());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getCarina() + "/mg/person/" + e.getId())).timeout(Duration.ofMinutes(2))

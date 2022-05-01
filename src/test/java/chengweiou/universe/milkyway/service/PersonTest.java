@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import chengweiou.universe.blackhole.exception.FailException;
+import chengweiou.universe.blackhole.exception.ProjException;
 import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.model.SearchCondition;
@@ -31,11 +32,19 @@ public class PersonTest {
 	private PersonDio dio;
 
 	@Test
-	public void saveDelete() throws FailException {
+	public void saveDelete() throws FailException, ProjException {
 		Person e = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").to(new Person());
-		dio.save(e);
+		service.save(e);
 		Assertions.assertEquals(true, e.getId()> 0);
 		dio.delete(e);
+	}
+
+	@Test
+	public void saveFailDup() throws FailException, ProjException {
+		Person e1 = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").set("phone", data.personList.get(0).getPhone()).to(new Person());
+		Assertions.assertThrows(ProjException.class, () -> service.save(e1));
+		Person e2 = Builder.set("type", PersonType.EMPLOYEE).set("name", "service-test").set("email", data.personList.get(0).getEmail()).to(new Person());
+		Assertions.assertThrows(ProjException.class, () -> service.save(e2));
 	}
 
 	@Test
@@ -56,6 +65,10 @@ public class PersonTest {
 		Person indb = dio.findById(e);
 		Assertions.assertEquals("service update", indb.getName());
 
+		e = Builder.set("id", data.personList.get(0).getId()).set("phone", data.personList.get(0).getPhone()).to(new Person());
+		count = dio.update(e);
+		Assertions.assertEquals(1, count);
+
 		dio.update(data.personList.get(0));
 	}
 
@@ -68,6 +81,14 @@ public class PersonTest {
 		Assertions.assertEquals("9998887776", indb.getPhone());
 
 		dio.update(data.personList.get(0));
+	}
+
+	@Test
+	public void updateFailDup() throws FailException, ProjException {
+		Person e1 = Builder.set("id", data.personList.get(0).getId()).set("phone", data.personList.get(1).getPhone()).to(new Person());
+		Assertions.assertThrows(ProjException.class, () -> service.update(e1));
+		Person e2 = Builder.set("id", data.personList.get(0).getId()).set("email", data.personList.get(1).getEmail()).to(new Person());
+		Assertions.assertThrows(ProjException.class, () -> service.update(e2));
 	}
 
 	@Test

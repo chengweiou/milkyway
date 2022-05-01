@@ -26,13 +26,14 @@ public class AccountService {
         List<String> paramList = new ArrayList<>();
         paramList.add("username=" + e.getUsername());
         paramList.add("password=" + e.getPassword());
-        paramList.add("phone=" + e.getPhone());
-        paramList.add("email=" + e.getEmail());
-        // paramList.add("wechat=" + e.getWechat());
-        // paramList.add("weibo=" + e.getWeibo());
-        // paramList.add("google=" + e.getGoogle());
-        // paramList.add("facebook=" + e.getFacebook());
-        paramList.add("extra=" + e.getExtra());
+        if (e.getPhone() != null) paramList.add("phone=" + e.getPhone());
+        if (e.getEmail() != null) paramList.add("email=" + e.getEmail());
+        if (e.getWechat() != null) paramList.add("wechat=" + e.getWechat());
+        if (e.getWeibo() != null) paramList.add("weibo=" + e.getWeibo());
+        if (e.getGoogle() != null) paramList.add("google=" + e.getGoogle());
+        if (e.getFacebook() != null) paramList.add("facebook=" + e.getFacebook());
+        if (e.getExtra() != null) paramList.add("extra=" + e.getExtra());
+        if (e.getActive() != null) paramList.add("active=" + e.getActive());
         if (e.getPerson() != null) paramList.add("person.id=" + e.getPerson().getId());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
@@ -73,8 +74,14 @@ public class AccountService {
 
     public Rest<Boolean> updateByPerson(Account e) {
         List<String> paramList = new ArrayList<>();
-        paramList.add("phone=" + e.getPhone());
-        paramList.add("email=" + e.getEmail());
+        if (e.getPhone() != null) paramList.add("phone=" + e.getPhone());
+        if (e.getEmail() != null) paramList.add("email=" + e.getEmail());
+        if (e.getWechat() != null) paramList.add("wechat=" + e.getWechat());
+        if (e.getWeibo() != null) paramList.add("weibo=" + e.getWeibo());
+        if (e.getGoogle() != null) paramList.add("google=" + e.getGoogle());
+        if (e.getFacebook() != null) paramList.add("facebook=" + e.getFacebook());
+        if (e.getExtra() != null) paramList.add("extra=" + e.getExtra());
+        if (e.getActive() != null) paramList.add("active=" + e.getActive());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getAndromeda() + "/mg/account/person/" + e.getPerson().getId())).timeout(Duration.ofMinutes(2))
