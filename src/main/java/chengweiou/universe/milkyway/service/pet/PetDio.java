@@ -20,10 +20,6 @@ public class PetDio extends BaseDio<Pet, Pet.Dto> {
     private PetDao dao;
     @Override
     protected PetDao getDao() { return dao; }
-    @Override
-    protected Class getTClass() { return Pet.class; };
-    @Override
-    protected String getDefaultSort() { return "updateAt"; };
 
     @Override
     protected String baseFind(AbstractSearchCondition searchCondition, Pet.Dto sample) {

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import chengweiou.universe.blackhole.dao.BaseDio;
 import chengweiou.universe.blackhole.dao.BaseSQL;
+import chengweiou.universe.blackhole.dao.DioDefaultSort;
+import chengweiou.universe.blackhole.dao.DioDefaultSortAz;
 import chengweiou.universe.blackhole.model.AbstractSearchCondition;
 import chengweiou.universe.milkyway.dao.person.PersonDao;
 import chengweiou.universe.milkyway.model.entity.person.Person;
@@ -17,12 +19,10 @@ public class PersonDio extends BaseDio<Person, Person.Dto> {
     private PersonDao dao;
     @Override
     protected PersonDao getDao() { return dao; }
-    @Override
-    protected Class getTClass() { return Person.class; };
-    @Override
-    protected String getDefaultSort() { return "updateAt"; };
-    @Override
-    protected boolean getDefaultSortAz() { return false; };
+    @DioDefaultSort("updateAt")
+    private String defaultSort;
+    @DioDefaultSortAz(true)
+    private boolean defaultSortAz;
 
     @Override
     protected String baseFind(AbstractSearchCondition searchCondition, Person.Dto sample) {
