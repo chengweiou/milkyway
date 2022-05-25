@@ -9,9 +9,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 // todo tip: 使用时开启
+@Profile("!test")
 @Configuration
 @EnableAsync
-@Profile("!test")
 public class AsyncConfig {
     @Bean
     public Executor taskExecutor() {
