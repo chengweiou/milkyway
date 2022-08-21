@@ -45,7 +45,9 @@ public class Person extends ServiceEntity {
         private PersonType type;
         @DtoKey
         private String name;
+        @DtoKey(single = true)
         private String phone;
+        @DtoKey(single = true)
         private String email;
         private String imgsrc;
 

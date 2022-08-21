@@ -40,7 +40,7 @@ public class PetControllerMg {
     }
 
     @PutMapping("/pet/{id}")
-    public Rest<Boolean> update(Pet e) throws ParamException {
+    public Rest<Boolean> update(Pet e) throws ParamException, FailException {
         Valid.check("pet.id", e.getId()).is().positive();
         Valid.check("pet.person.id | pet.type | name | age", e.getPerson(), e.getType(), e.getName(), e.getAge()).are().notAllNull();
         boolean success = dio.update(e) == 1;

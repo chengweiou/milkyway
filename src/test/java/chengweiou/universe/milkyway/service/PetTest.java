@@ -57,7 +57,7 @@ public class PetTest {
 	}
 
 	@Test
-	public void update() {
+	public void update() throws FailException {
 		Pet e = Builder.set("id", data.petList.get(0).getId()).set("name", "dio update").to(new Pet());
 		long count = dio.update(e);
 		Assertions.assertEquals(1, count);
@@ -68,7 +68,7 @@ public class PetTest {
 	}
 
 	@Test
-	public void updateBySample() {
+	public void updateBySample() throws FailException {
 		Pet e = Builder.set("name", "dio update").to(new Pet());
 		Pet sample = Builder.set("name", data.petList.get(0).getName()).to(new Pet());
 		long count = dio.updateBySample(e, sample);
@@ -80,7 +80,7 @@ public class PetTest {
 	}
 
 	@Test
-	public void updateByIdList() {
+	public void updateByIdList() throws FailException {
 		Pet e = Builder.set("name", "dio update").to(new Pet());
 		List<String> idList = List.of(data.petList.get(0).getId().toString());
 		long count = dio.updateByIdList(e, idList);

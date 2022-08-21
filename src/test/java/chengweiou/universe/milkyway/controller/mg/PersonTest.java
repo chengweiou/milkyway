@@ -24,6 +24,7 @@ import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.data.Data;
 import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import chengweiou.universe.milkyway.manager.carina.CarinaPersonManager;
+import chengweiou.universe.milkyway.manager.leob.LeobNotifyManager;
 import chengweiou.universe.milkyway.model.entity.person.Person;
 import chengweiou.universe.milkyway.service.person.PersonDio;
 
@@ -38,6 +39,8 @@ public class PersonTest {
 	private AccountManager accountManager;
 	@Autowired
 	private CarinaPersonManager carinaPersonManager;
+	@Autowired
+	private LeobNotifyManager leobNotifyManager;
 	private Account loginAccount;
 	@Autowired
 	private Data data;
@@ -78,6 +81,7 @@ public class PersonTest {
 		String result = mvc.perform(MockMvcRequestBuilders.put("/mg/person/" + data.personList.get(0).getId())
 				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("name", "controller update1")
+				.param("phone", "923929329")
 		).andReturn().getResponse().getContentAsString();
 		Rest<Boolean> rest = Rest.from(result);
 		Assertions.assertEquals(BasicRestCode.OK, rest.getCode());
@@ -132,5 +136,6 @@ public class PersonTest {
 	public void mock() throws FailException {
 		Mockito.when(accountManager.save(Mockito.any())).thenReturn(1L);
 		Mockito.when(carinaPersonManager.save(Mockito.any())).thenReturn(1L);
+		Mockito.when(leobNotifyManager.saveOrUpdate(Mockito.any())).thenReturn(1L);
 	}
 }

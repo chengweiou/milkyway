@@ -2,6 +2,7 @@ package chengweiou.universe.milkyway.data;
 
 import chengweiou.universe.milkyway.manager.andromeda.AccountManager;
 import chengweiou.universe.milkyway.manager.carina.CarinaPersonManager;
+import chengweiou.universe.milkyway.manager.leob.LeobNotifyManager;
 
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
@@ -18,5 +19,9 @@ public class MockConfig {
     @Bean("carinaPersonManager")
     public CarinaPersonManager carinaPersonManager() {
         return Mockito.mock(CarinaPersonManager.class);
+    }
+    @Bean("leobNotifyManager")
+    public LeobNotifyManager leobNotifyManager() {
+        return Mockito.mock(LeobNotifyManager.class);
     }
 }
