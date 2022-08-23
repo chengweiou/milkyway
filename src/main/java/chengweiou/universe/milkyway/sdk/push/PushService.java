@@ -1,6 +1,14 @@
 package chengweiou.universe.milkyway.sdk.push;
 
 
+import chengweiou.universe.blackhole.model.BasicRestCode;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.util.LogUtil;
+import chengweiou.universe.milkyway.sdk.SiteConfig;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -10,14 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import chengweiou.universe.blackhole.model.BasicRestCode;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.blackhole.util.LogUtil;
-import chengweiou.universe.milkyway.sdk.SiteConfig;
 
 @Component
 public class PushService {
@@ -32,7 +32,7 @@ public class PushService {
         paramList.add("person.id=" + e.getPerson().getId());
         paramList.add("name=" + e.getName());
         paramList.add("content=" + e.getContent());
-        if (e.getNotifyType()!=null) paramList.add("notifyType=" + e.getNotifyType());
+        if (e.getPushSpecType()!=null) paramList.add("pushSpecType=" + e.getPushSpecType());
         if (e.getNum()!=null) paramList.add("num=" + e.getNum());
         if (e.getTopic()!=null) paramList.add("topic=" + e.getTopic());
         if (e.getPushInApp()!=null) paramList.add("pushInApp=" + e.getPushInApp());

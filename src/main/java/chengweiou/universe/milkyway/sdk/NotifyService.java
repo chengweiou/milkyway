@@ -1,15 +1,6 @@
 package chengweiou.universe.milkyway.sdk;
 
 
-import chengweiou.universe.blackhole.model.BasicRestCode;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.blackhole.util.LogUtil;
-import chengweiou.universe.milkyway.model.entity.person.Person;
-import chengweiou.universe.milkyway.sdk.push.Notify;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -19,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import chengweiou.universe.blackhole.model.BasicRestCode;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.util.LogUtil;
+import chengweiou.universe.milkyway.sdk.push.Notify;
 
 @Component
 public class NotifyService {

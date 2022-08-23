@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.milkyway.sdk.NotifyService;
-import chengweiou.universe.milkyway.sdk.push.Notify;
 import chengweiou.universe.milkyway.sdk.push.Push;
 import chengweiou.universe.milkyway.sdk.push.PushService;
 
