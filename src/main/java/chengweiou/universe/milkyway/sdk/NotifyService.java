@@ -25,12 +25,12 @@ public class NotifyService {
     private SiteConfig siteConfig;
     public Rest<Long> save(Notify e) {
         List<String> paramList = new ArrayList<>();
-        paramList.add("id=" + e.getId());
+        paramList.add("person.id=" + e.getPerson().getId());
         paramList.add("email=" + e.getEmail());
         paramList.add("sms=" + e.getSms());
         String param = paramList.stream().collect(Collectors.joining("&"));
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getCarina() + "/mg/notify")).timeout(Duration.ofMinutes(2))
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(siteConfig.getLeob() + "/mg/notify")).timeout(Duration.ofMinutes(2))
                 .method("POST", HttpRequest.BodyPublishers.ofString(param))
                 .header("content-type", "application/x-www-form-urlencoded")
                 .header("inServer", "true")
