@@ -1,14 +1,6 @@
 package chengweiou.universe.milkyway.sdk;
 
 
-import chengweiou.universe.blackhole.model.BasicRestCode;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.blackhole.util.LogUtil;
-import chengweiou.universe.milkyway.model.entity.person.Person;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -19,7 +11,16 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import chengweiou.universe.blackhole.model.BasicRestCode;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.milkyway.model.entity.person.Person;
+import lombok.extern.slf4j.Slf4j;
+
 @Component
+@Slf4j
 public class CarinaPersonService {
     @Autowired
     private SiteConfig siteConfig;
@@ -40,7 +41,7 @@ public class CarinaPersonService {
             String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).get();
             return Rest.from(response, Long.class);
         } catch (InterruptedException | ExecutionException ex) {
-            LogUtil.e("person save fail", ex);
+            log.error("person save fail", ex);
             return Rest.fail(BasicRestCode.FAIL);
         }
     }
@@ -61,7 +62,7 @@ public class CarinaPersonService {
             String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).get();
             return Rest.from(response, Boolean.class);
         } catch (InterruptedException | ExecutionException ex) {
-            LogUtil.e("person update fail: personId: " + e.getId(), ex);
+            log.error("person update fail: personId: " + e.getId(), ex);
             return Rest.fail(BasicRestCode.FAIL);
         }
     }

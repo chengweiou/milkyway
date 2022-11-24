@@ -16,10 +16,11 @@ import org.springframework.stereotype.Component;
 
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.blackhole.util.LogUtil;
 import chengweiou.universe.milkyway.sdk.push.Notify;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class NotifyService {
     @Autowired
     private SiteConfig siteConfig;
@@ -40,7 +41,7 @@ public class NotifyService {
             String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).get();
             return Rest.from(response, Long.class);
         } catch (InterruptedException | ExecutionException ex) {
-            LogUtil.e("person save fail", ex);
+            log.error("person save fail", ex);
             return Rest.fail(BasicRestCode.FAIL);
         }
     }
