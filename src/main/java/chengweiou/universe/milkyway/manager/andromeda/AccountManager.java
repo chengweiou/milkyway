@@ -1,15 +1,14 @@
 package chengweiou.universe.milkyway.manager.andromeda;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import chengweiou.universe.blackhole.exception.FailException;
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.milkyway.base.converter.Account;
 import chengweiou.universe.milkyway.sdk.AccountService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
-@Profile("!test")
 @Service
 public class AccountManager {
     @Autowired
